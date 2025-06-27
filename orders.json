@@ -1,0 +1,25 @@
+﻿
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : [{"_id":"6849269cba8c907742ad13be","userId":"68415cb3d387f8224d652885","name":"Nom
+                    Utilisateur","products":[{"productId":"683d83593d3795bcc422b9ea","name":"fongicide
+                    ","quantity":1,"price":22222,"phone"...
+RawContent        : HTTP/1.1 200 OK
+                    Access-Control-Allow-Origin: *
+                    Connection: keep-alive
+                    Keep-Alive: timeout=5
+                    Content-Length: 417
+                    Content-Type: application/json; charset=utf-8
+                    Date: Wed, 11 Jun 2025 06:50:37 GMT...
+Forms             : {}
+Headers           : {[Access-Control-Allow-Origin, *], [Connection, keep-alive], [Keep-Alive, 
+                    timeout=5], [Content-Length, 417]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 417
+
+
+
