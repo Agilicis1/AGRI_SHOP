@@ -43,3 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Ignore les fichiers d'environnement
+.env
+../backend-IA/.env
