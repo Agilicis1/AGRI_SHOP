@@ -507,6 +507,7 @@ Future<bool> createProductWithImage({
   required BuildContext context,
 }) async {
   try {
+    // L'URL d'upload est correcte, le backend doit enregistrer uniquement le chemin relatif (uploads/xxx.jpg)
     var request = http.MultipartRequest(
       'POST',
       Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'),
@@ -574,6 +575,7 @@ Future<bool> createProductWithImageUniversal({
       });
     }
 
+    // L'URL d'upload est correcte, le backend doit enregistrer uniquement le chemin relatif (uploads/xxx.jpg)
     print('Envoi des données du produit: ${formData.fields}');
 
     final response = await dio.post(
