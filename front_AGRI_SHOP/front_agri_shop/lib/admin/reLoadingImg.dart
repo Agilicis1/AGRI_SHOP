@@ -26,7 +26,7 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
     setState(() {
       isLoading = true;
     });
-    final url = Uri.parse('http://localhost:3000/api/loading-images');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/loading-images');
     if (showSnackbar) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Chargement des images...')),
@@ -99,7 +99,7 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
                   itemCount: images.length,
                   itemBuilder: (context, index) {
                     final imgObj = images[index];
-                    final imgUrl = 'http://localhost:3000/' + (imgObj['image'] ?? '');
+                    final imgUrl = 'https://agri-shop-5b8y.onrender.com/' + (imgObj['image'] ?? '');
                     final description = imgObj['description'] ?? '';
                     final categorie = imgObj['categorie'] ?? '';
                     return Padding(

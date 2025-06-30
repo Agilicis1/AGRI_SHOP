@@ -74,7 +74,7 @@ class _CreerUtilisateurWidgetState extends State<CreerUtilisateurWidget> {
   }
 
   Future<void> getUtilisateurs({bool showSnackbar = false}) async {
-    final url = Uri.parse('http://localhost:3000/api/users');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/users');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -96,7 +96,7 @@ class _CreerUtilisateurWidgetState extends State<CreerUtilisateurWidget> {
   }
 
   Future<void> supprimerUtilisateur(String id) async {
-    final url = Uri.parse('http://localhost:3000/api/users/$id');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/users/$id');
     final response = await http.delete(url);
     if (response.statusCode == 200) {
       await getUtilisateurs();
@@ -111,7 +111,7 @@ class _CreerUtilisateurWidgetState extends State<CreerUtilisateurWidget> {
   }
 
   Future<void> modifierUtilisateur(String id, String nom, String email, String motDePasse, String telephone) async {
-    final url = Uri.parse('http://localhost:3000/api/users/$id');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/users/$id');
     final response = await http.put(url,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
@@ -135,7 +135,7 @@ class _CreerUtilisateurWidgetState extends State<CreerUtilisateurWidget> {
 
   Future<void> creerUtilisateur() async {
     setState(() => isLoading = true);
-    final url = Uri.parse('http://localhost:3000/api/auth/register');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/auth/register');
     try {
       final response = await http.post(
         url,

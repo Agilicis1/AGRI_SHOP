@@ -129,7 +129,7 @@ class _GestionDesProduitsState extends State<GestionDesProduits> {
                           );
                           if (confirm == true) {
                             final response = await http.delete(
-                              Uri.parse('http://localhost:3000/api/products/${product.id}'),
+                              Uri.parse('https://agri-shop-5b8y.onrender.com/api/products/${product.id}'),
                               headers: {'Content-Type': 'application/json'},
                             );
                             if (response.statusCode == 200 || response.statusCode == 204) {
@@ -193,7 +193,7 @@ class _GestionDesProduitsState extends State<GestionDesProduits> {
                                     ElevatedButton(
                                       onPressed: () async {
                                         final response = await http.put(
-                                          Uri.parse('http://localhost:3000/api/products/${product.id}'),
+                                          Uri.parse('https://agri-shop-5b8y.onrender.com/api/products/${product.id}'),
                                           headers: {'Content-Type': 'application/json'},
                                           body: jsonEncode({
                                             'name': nomController.text,
@@ -388,7 +388,7 @@ class _GestionDesProduitsState extends State<GestionDesProduits> {
   }
 }
 
-class AdminProductCard extends StatelessWidget {
+class AdminProductCard extends StatefulWidget {
   final Product product;
   final VoidCallback onDelete;
   final VoidCallback onEdit;
@@ -396,31 +396,38 @@ class AdminProductCard extends StatelessWidget {
   const AdminProductCard({Key? key, required this.product, required this.onDelete, required this.onEdit}) : super(key: key);
 
   @override
+  State<AdminProductCard> createState() => _AdminProductCardState();
+}
+
+class _AdminProductCardState extends State<AdminProductCard> {
+  int selectedQuantity = 1;
+
+  @override
   Widget build(BuildContext context) {
     Widget imageWidget;
-    if (product.image.isNotEmpty && (product.image.startsWith('http://') || product.image.startsWith('https://'))) {
+    if (widget.product.image.isNotEmpty && (widget.product.image.startsWith('http://') || widget.product.image.startsWith('https://'))) {
       imageWidget = Image.network(
-        product.image,
+        widget.product.image,
         height: 60,
         width: 60,
         fit: BoxFit.cover,
         errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image),
       );
-    } else if (product.image.isNotEmpty && (product.image.startsWith('/') || product.image.contains(':\\') || product.image.contains(':/'))) {
+    } else if (widget.product.image.isNotEmpty && (widget.product.image.startsWith('/') || widget.product.image.contains(':\\') || widget.product.image.contains(':/'))) {
       if (kIsWeb) {
         imageWidget = Icon(Icons.image_not_supported, size: 60, color: Colors.grey);
       } else {
         imageWidget = Image.file(
-          File(product.image),
+          File(widget.product.image),
           height: 60,
           width: 60,
           fit: BoxFit.cover,
           errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image),
         );
       }
-    } else if (product.image.isNotEmpty) {
+    } else if (widget.product.image.isNotEmpty) {
       imageWidget = Image.asset(
-        product.image,
+        widget.product.image,
         height: 60,
         width: 60,
         fit: BoxFit.cover,
@@ -438,27 +445,49 @@ class AdminProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Flexible(
+                  child: imageWidget,
+                ),
                 imageWidget,
                 SizedBox(width: 16),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text(product.description),
-                      Text('${product.price} FCFA', style: TextStyle(color: Colors.green)),
-                      Text('Stock: ${product.quantity}'),
+                      Text(widget.product.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                      Text(widget.product.description),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              '${widget.product.price} FCFA',
+                              style: TextStyle(
+                                color: Colors.green[800],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Text(
+                            'Stock : ${widget.product.quantity}',
+                            style: TextStyle(fontSize: 14, color: Colors.black87),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
                 IconButton(
                   icon: Icon(Icons.edit, color: Colors.blue),
-                  onPressed: onEdit,
+                  onPressed: widget.onEdit,
                 ),
                 IconButton(
                   icon: Icon(Icons.delete, color: Colors.red),
-                  onPressed: onDelete,
+                  onPressed: widget.onDelete,
                 ),
               ],
             ),
@@ -480,7 +509,7 @@ Future<bool> createProductWithImage({
   try {
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse('http://localhost:3000/api/products'),
+      Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'),
     );
     request.fields['name'] = name;
     request.fields['price'] = price;
@@ -548,7 +577,7 @@ Future<bool> createProductWithImageUniversal({
     print('Envoi des données du produit: ${formData.fields}');
 
     final response = await dio.post(
-      'http://localhost:3000/api/products',
+      'https://agri-shop-5b8y.onrender.com/api/products',
       data: formData,
       options: Options(
         contentType: 'multipart/form-data',
@@ -562,7 +591,7 @@ Future<bool> createProductWithImageUniversal({
     print('Réponse du serveur: ${response.statusCode} - ${response.data}');
 
     if (response.statusCode == 201 || response.statusCode == 200) {
-      final verifyResponse = await http.get(Uri.parse('http://localhost:3000/api/products'));
+      final verifyResponse = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
       if (verifyResponse.statusCode == 200) {
         List<dynamic> products = json.decode(verifyResponse.body);
         final newProduct = products.firstWhere(
@@ -588,7 +617,7 @@ Future<bool> createProductWithImageUniversal({
 
 class ProductService {
   static Future<List<Product>> fetchProducts() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+    final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
       return data.map((item) => Product(

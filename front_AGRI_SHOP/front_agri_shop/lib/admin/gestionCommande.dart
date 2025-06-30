@@ -13,7 +13,7 @@ class GestionDesCommandes extends StatefulWidget {
 
 class _GestionDesCommandesState extends State<GestionDesCommandes> {
   Future<List<dynamic>> fetchCommandes() async {
-    final uri = Uri.parse('http://localhost:3000/api/orders');
+    final uri = Uri.parse('https://agri-shop-5b8y.onrender.com/api/orders');
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
@@ -23,7 +23,7 @@ class _GestionDesCommandesState extends State<GestionDesCommandes> {
   }
 
   Future<List<dynamic>> fetchUsers() async {
-    final uri = Uri.parse('http://localhost:3000/api/users');
+    final uri = Uri.parse('https://agri-shop-5b8y.onrender.com/api/users');
     final response = await http.get(uri);
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
@@ -43,7 +43,7 @@ class _GestionDesCommandesState extends State<GestionDesCommandes> {
   }
 
   Future<void> deleteCommande(String id) async {
-    final uri = Uri.parse('http://localhost:3000/api/orders/$id');
+    final uri = Uri.parse('https://agri-shop-5b8y.onrender.com/api/orders/$id');
     final response = await http.delete(uri);
     if (response.statusCode == 200) {
       setState(() {

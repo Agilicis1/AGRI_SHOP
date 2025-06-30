@@ -29,7 +29,7 @@ class _IA_pageState extends State<IA_page> {
 
   Future<void> loadProductNames() async {
     try {
-      final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+      final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
       if (response.statusCode == 200) {
         List<dynamic> data = json.decode(response.body);
         setState(() {
@@ -79,7 +79,7 @@ class _IA_pageState extends State<IA_page> {
       result = null;
     });
     try {
-      var uri = Uri.parse('http://localhost:3001/analyze-image');
+      var uri = Uri.parse('https://agri-shop-5b8y.onrender.com/analyze-image');
       var request = http.MultipartRequest('POST', uri);
       if (kIsWeb && imageBytes != null) {
         request.files.add(
@@ -232,7 +232,7 @@ class _IA_pageState extends State<IA_page> {
                               ElevatedButton(
                                 onPressed: () async {
                                   try {
-                                    final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+                                    final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
                                     if (response.statusCode == 200) {
                                       List<dynamic> data = json.decode(response.body);
                                       // On récupère le produit dont le nom correspond à foundProduct 

@@ -59,7 +59,7 @@ final List<String> categories = [
       int? statusCode;
       if (kIsWeb && _imageBytes != null && _fileName != null) {
         statusCode = await MultipartRequestWithBytes(
-          url: 'http://localhost:3000/upload-loading-image',
+          url: 'https://agri-shop-5b8y.onrender.com/upload-loading-image',
           bytes: _imageBytes!,
           filename: _fileName!,
           description: _descriptionController.text,
@@ -67,7 +67,7 @@ final List<String> categories = [
         );
       } else if (!kIsWeb && _selectedImage != null) {
         statusCode = await MultipartRequestWithFile(
-          url: 'http://localhost:3000/upload-loading-image',
+          url: 'https://agri-shop-5b8y.onrender.com/upload-loading-image',
           file: _selectedImage!,
           description: _descriptionController.text,
           categorie: _selectedCategorie ?? '',

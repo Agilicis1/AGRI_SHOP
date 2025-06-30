@@ -115,124 +115,103 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     final product = widget.product;
     Widget imageWidget;
-    if (product.image.isNotEmpty && (product.image.startsWith('http://') || product.image.startsWith('https://'))) {
-      imageWidget = ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Image.network(
-          product.image,
-          height: 150,
-          width: double.infinity,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 150),
-        ),
-      );
-    } else if (product.image.isNotEmpty && (product.image.startsWith('/') || product.image.contains(':\\') || product.image.contains(':/'))) {
-      if (kIsWeb) {
-        imageWidget = Icon(Icons.image_not_supported, size: 150, color: Colors.grey);
-      } else {
-        imageWidget = ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: Image.file(
-            File(product.image),
-            height: 100,
-            width: double.infinity,
-            fit: BoxFit.contain,
-            errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 150),
-          ),
-        );
-      }
-    } else if (product.image.isNotEmpty) {
-      imageWidget = ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Image.asset(
-          product.image,
-          height: 150,
-          width: double.infinity,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 150),
-        ),
-      );
-    } else {
-      imageWidget = Container(width: 100, height: 100, color: Colors.grey[200], child: Icon(Icons.image, size: 40, color: Colors.grey));
-    }
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            imageWidget,
-            SizedBox(height: 8),
-            Text(
-              product.name.isNotEmpty ? product.name : (product.id ?? 'Produit'),
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: 4),
-            Text(
-              product.description,
-              style: TextStyle(color: Colors.grey[600], fontSize: 12),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    imageWidget = ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Image.network(
+        getProductImageUrl(product.image),
+        height: 100,
+        width: double.infinity,
+        fit: BoxFit.contain,
+        errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 80),
+      ),
+    );
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 300;
+        return Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Flexible(child: imageWidget, flex: isMobile ? 2 : 3),
+                SizedBox(height: 6),
                 Text(
-                  '${product.price} FCFA',
-                  style: TextStyle(
-                    color: Colors.green[800],
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                  product.name.isNotEmpty ? product.name : (product.id ?? 'Produit'),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: isMobile ? 13 : 16),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-              ],
-            ),
-            SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Quantité :', style: TextStyle(fontSize: 14)),
+                SizedBox(height: 2),
+                Text(
+                  product.description,
+                  style: TextStyle(color: Colors.grey[600], fontSize: isMobile ? 10 : 12),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 6),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: Icon(Icons.remove),
-                      onPressed: selectedQuantity > 1
-                          ? () => setState(() => selectedQuantity--)
-                          : null,
+                    Flexible(
+                      child: Text(
+                        '${product.price} FCFA',
+                        style: TextStyle(
+                          color: Colors.green[800],
+                          fontWeight: FontWeight.bold,
+                          fontSize: isMobile ? 12 : 15,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                    Text('$selectedQuantity', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.remove, size: isMobile ? 16 : 20),
+                          padding: EdgeInsets.zero,
+                          constraints: BoxConstraints(),
+                          onPressed: selectedQuantity > 1
+                              ? () => setState(() => selectedQuantity--)
+                              : null,
+                        ),
+                        Text('$selectedQuantity', style: TextStyle(fontWeight: FontWeight.bold, fontSize: isMobile ? 12 : 14)),
+                        IconButton(
+                          icon: Icon(Icons.add, size: isMobile ? 16 : 20),
+                          padding: EdgeInsets.zero,
+                          constraints: BoxConstraints(),
+                          onPressed: () => setState(() => selectedQuantity++),
+                        ),
+                      ],
+                    ),
                     IconButton(
-                      icon: Icon(Icons.add),
-                      onPressed: () => setState(() => selectedQuantity++),
+                      icon: Icon(Icons.add_shopping_cart, color: Colors.green, size: isMobile ? 18 : 22),
+                      padding: EdgeInsets.zero,
+                      constraints: BoxConstraints(),
+                      onPressed: () {
+                        Cart.items.add(CartItem(product: product, quantity: selectedQuantity));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('${product.name} x$selectedQuantity ajouté au panier'), backgroundColor: Colors.green),
+                        );
+                      },
                     ),
                   ],
                 ),
-                IconButton(
-                  icon: Icon(Icons.add_shopping_cart, color: Colors.green),
-                  onPressed: () {
-                    Cart.items.add(CartItem(product: product, quantity: selectedQuantity));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('${product.name} x$selectedQuantity ajouté au panier'), backgroundColor: Colors.green),
-                    );
-                  },
-                ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
 
 class ProductService {
   static Future<List<Product>> fetchProducts() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+    final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
       return data.map((item) => Product.fromJson(item)).toList();
@@ -241,7 +220,7 @@ class ProductService {
     }
   }
   static Future<List<Product>> fetchProductsByPriceAsc() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+    final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
     if (response.statusCode == 200) {
       List<Product> products = (json.decode(response.body) as List)
           .map((item) => Product.fromJson(item))
@@ -257,7 +236,7 @@ class ProductService {
     }
   }
   static Future<List<Product>> fetchProductsByPriceDesc() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/api/products'));
+    final response = await http.get(Uri.parse('https://agri-shop-5b8y.onrender.com/api/products'));
     if (response.statusCode == 200) {
       List<Product> products = (json.decode(response.body) as List)
           .map((item) => Product.fromJson(item))
@@ -273,4 +252,20 @@ class ProductService {
     }
   }
 }
+
+// Fonction utilitaire pour obtenir l'URL complète de l'image produit
+String getProductImageUrl(String image) {
+  if (image.startsWith('http://') || image.startsWith('https://')) {
+    return image;
+  } else if (image.isNotEmpty) {
+    if (image.startsWith('uploads/')) {
+      return 'https://agri-shop-5b8y.onrender.com/' + image;
+    } else {
+      return 'https://agri-shop-5b8y.onrender.com/uploads/' + image;
+    }
+  } else {
+    return 'assets/default.png';
+  }
+}
+
 File? _selectedImage;

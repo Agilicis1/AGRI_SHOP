@@ -45,7 +45,7 @@ class _PaiementPageState extends State<PaiementPage> {
       return;
     }
     setState(() => isLoading = true);
-    final url = Uri.parse('http://localhost:3000/api/orders');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/orders');
     try {
       final response = await http.post(
         url,
@@ -79,7 +79,7 @@ class _PaiementPageState extends State<PaiementPage> {
         ));
         // envoyer la notification au backend 
         final notifResponse = await http.post(
-          Uri.parse('http://localhost:3000/api/notifications'),
+          Uri.parse('https://agri-shop-5b8y.onrender.com/api/notifications'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             'userId': userID,

@@ -37,7 +37,7 @@ class _RegistrationState extends State<Registration> {
       return;
     }
 
-    final url = Uri.parse('http://localhost:3000/api/auth/register');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/auth/register');
 
     try {
       final response = await http.post(

@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
     final email = emailController.text.trim();
     final telephone = telephoneController.text.trim();
     final password = passwordController.text;
-    final url = Uri.parse('http://localhost:3000/api/auth/login');
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/auth/login');
 
     // N'envoyer que l'email ou le téléphone, pas les deux vides
     Map<String, dynamic> body = {

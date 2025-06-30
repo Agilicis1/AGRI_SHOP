@@ -29,7 +29,8 @@ class AdminHome extends StatelessWidget {
           ),
           ],
       ),
-      body: SingleChildScrollView(
+      body: Center(
+        child: SingleChildScrollView(
         child: GridView.count(
           crossAxisCount: 2,
           shrinkWrap: true,
@@ -73,6 +74,7 @@ class AdminHome extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }
