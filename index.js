@@ -351,6 +351,17 @@ app.get('/api/loading-images', async (req, res) => {
   }
 });
 app.use('/uploads', express.static('uploads'));
+// supprimer une image loading_image
+app.delete('/api/loading-images/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const image = await Loading_image.findByIdAndDelete(id);
+    res.status(200).json({ message: 'Image supprimée avec succès', image });
+  } catch (err) {
+    res.status(500).json({ error: 'Erreur lors de la suppression de l\'image' });
+  }
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

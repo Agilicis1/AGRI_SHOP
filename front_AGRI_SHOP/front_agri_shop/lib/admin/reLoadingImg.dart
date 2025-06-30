@@ -76,6 +76,27 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
     }
   }
 
+  Future<void> deleteImage(String imageId) async {
+    final url = Uri.parse('https://agri-shop-5b8y.onrender.com/api/loading-images/$imageId');
+    try {
+      final response = await http.delete(url);
+      if (response.statusCode == 200) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Image supprimée avec succès')),
+        );
+        getImageLoaded(); // Rafraîchir la liste
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erreur lors de la suppression: ${response.statusCode}')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erreur lors de la suppression')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,14 +136,29 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
                           SizedBox(height: 8),
                           Text('description de la maladie: ' + description, style: TextStyle(fontSize: 16)),
                           Text('categorie de la maladie: ' + categorie, style: TextStyle(fontSize: 16)),
-                          /* fonctionalitée de telechargement de l'image 
-                          IconButton(
-                      icon: Icon(Icons.download),
-                      onPressed: () {
-                        downloadImage(images[index]['image']);
-                      },
-                    ), */
-                    Divider(),
+                          Row(
+                            children: [
+                            /*  IconButton(
+                                icon: Icon(Icons.download),
+                                onPressed: () {
+                                  downloadImage(imgUrl);
+                                },
+                              ),*/
+                              /*IconButton(
+                                icon: Icon(Icons.delete, color: Colors.red),
+                                onPressed: () {
+                                  if (imgObj['_id'] != null) {
+                                    deleteImage(imgObj['_id']);
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('ID de l\'image introuvable')),
+                                    );
+                                  }
+                                },
+                              ),*/
+                            ],
+                          ),
+                          Divider(),
                         ],
                       ),
                     );

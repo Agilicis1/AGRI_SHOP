@@ -119,7 +119,7 @@ class _ProductCardState extends State<ProductCard> {
       borderRadius: BorderRadius.circular(12),
       child: Image.network(
         getProductImageUrl(product.image),
-        height: 100,
+        height: 150,
         width: double.infinity,
         fit: BoxFit.contain,
         errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 80),
@@ -137,41 +137,30 @@ class _ProductCardState extends State<ProductCard> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Flexible(child: imageWidget, flex: isMobile ? 2 : 3),
-                SizedBox(height: 6),
+                SizedBox(height: 2),
                 Text(
                   product.name.isNotEmpty ? product.name : (product.id ?? 'Produit'),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: isMobile ? 13 : 16),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: isMobile ? 15 : 18),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 2),
+                SizedBox(height: 1),
                 Text(
                   product.description,
-                  style: TextStyle(color: Colors.grey[600], fontSize: isMobile ? 10 : 12),
+                  style: TextStyle(color: Colors.grey[600], fontSize: isMobile ? 9 : 11),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 6),
+                SizedBox(height: 2),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Flexible(
-                      child: Text(
-                        '${product.price} FCFA',
-                        style: TextStyle(
-                          color: Colors.green[800],
-                          fontWeight: FontWeight.bold,
-                          fontSize: isMobile ? 12 : 15,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
+                    // Boutons -1+
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         IconButton(
-                          icon: Icon(Icons.remove, size: isMobile ? 16 : 20),
+                          icon: Icon(Icons.remove, size: isMobile ? 18 : 22),
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: selectedQuantity > 1
@@ -180,13 +169,15 @@ class _ProductCardState extends State<ProductCard> {
                         ),
                         Text('$selectedQuantity', style: TextStyle(fontWeight: FontWeight.bold, fontSize: isMobile ? 12 : 14)),
                         IconButton(
-                          icon: Icon(Icons.add, size: isMobile ? 16 : 20),
+                          icon: Icon(Icons.add, size: isMobile ? 18 : 22),
                           padding: EdgeInsets.zero,
                           constraints: BoxConstraints(),
                           onPressed: () => setState(() => selectedQuantity++),
                         ),
                       ],
                     ),
+                    Spacer(),
+                    // Bouton panier à droite
                     IconButton(
                       icon: Icon(Icons.add_shopping_cart, color: Colors.green, size: isMobile ? 18 : 22),
                       padding: EdgeInsets.zero,
@@ -199,6 +190,18 @@ class _ProductCardState extends State<ProductCard> {
                       },
                     ),
                   ],
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '${product.price} FCFA',
+                    style: TextStyle(
+                      color: Colors.green[800],
+                      fontWeight: FontWeight.bold,
+                      fontSize: isMobile ? 12 : 15,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
               ],
             ),

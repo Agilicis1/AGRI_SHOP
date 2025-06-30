@@ -407,7 +407,7 @@ class _AdminProductCardState extends State<AdminProductCard> {
     Widget imageWidget;
     if (widget.product.image.isNotEmpty && (widget.product.image.startsWith('http://') || widget.product.image.startsWith('https://'))) {
       imageWidget = Image.network(
-        widget.product.image,
+        getProductImageUrl(widget.product.image),
         height: 60,
         width: 60,
         fit: BoxFit.cover,
@@ -426,8 +426,8 @@ class _AdminProductCardState extends State<AdminProductCard> {
         );
       }
     } else if (widget.product.image.isNotEmpty) {
-      imageWidget = Image.asset(
-        widget.product.image,
+      imageWidget = Image.network(
+        getProductImageUrl(widget.product.image),
         height: 60,
         width: 60,
         fit: BoxFit.cover,
@@ -450,7 +450,6 @@ class _AdminProductCardState extends State<AdminProductCard> {
                 Flexible(
                   child: imageWidget,
                 ),
-                imageWidget,
                 SizedBox(width: 16),
                 Expanded(
                   child: Column(
@@ -634,6 +633,21 @@ class ProductService {
     } else {
       throw Exception('Erreur lors du chargement des produits');
     }
+  }
+}
+
+// Fonction utilitaire pour obtenir l'URL complète de l'image produit (comme dans e-commerce)
+String getProductImageUrl(String image) {
+  if (image.startsWith('http://') || image.startsWith('https://')) {
+    return image;
+  } else if (image.isNotEmpty) {
+    if (image.startsWith('uploads/')) {
+      return 'https://agri-shop-5b8y.onrender.com/' + image;
+    } else {
+      return 'https://agri-shop-5b8y.onrender.com/uploads/' + image;
+    }
+  } else {
+    return 'assets/default.png';
   }
 }
 
