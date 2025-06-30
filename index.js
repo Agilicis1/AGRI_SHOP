@@ -206,7 +206,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     const { name, price, description, quantity, categorie } = req.body;
     let imageUrl = '';
     if (req.file) {
-      imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
+      imageUrl = `uploads/${req.file.filename}`;
     }
     const product = new Product({
       name,
@@ -325,7 +325,6 @@ app.post('/api/cart/:userId/clear', async (req, res) => {
 app.post('/upload-loading-image', upload.single('image'), async (req, res) => {
   try {
     const { description, categorie } = req.body;
-    console.log('Categorie received:', categorie, '|');
     let imagePath = '';
     if (req.file) {
       imagePath = `uploads/${req.file.filename}`;
