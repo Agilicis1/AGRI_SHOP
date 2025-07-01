@@ -33,6 +33,7 @@ class _GestionDesProduitsState extends State<GestionDesProduits> {
     'Fongicides',
     'Insecticides',
     'Nématicides',
+    'autres', 
   ];
   String? _selectedCategorie;
 

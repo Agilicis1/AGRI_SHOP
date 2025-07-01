@@ -22,6 +22,7 @@ final List<String> categories = [
     'Fongicides',
     'Insecticides',
     'Nématicides',
+    'autres', 
   ];
   String? _selectedCategorie;
   final TextEditingController _categorieController = TextEditingController();
