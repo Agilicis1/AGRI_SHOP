@@ -102,7 +102,8 @@ class CartService {
 
 class ProductCard extends StatefulWidget {
   final Product product;
-  const ProductCard({Key? key, required this.product}) : super(key: key);
+  final VoidCallback? onAddToCart;
+  const ProductCard({Key? key, required this.product, this.onAddToCart}) : super(key: key);
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -110,6 +111,7 @@ class ProductCard extends StatefulWidget {
 
 class _ProductCardState extends State<ProductCard> {
   int selectedQuantity = 1;
+  int _cartItemCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -183,10 +185,13 @@ class _ProductCardState extends State<ProductCard> {
                       padding: EdgeInsets.zero,
                       constraints: BoxConstraints(),
                       onPressed: () {
+                        setState(() {
+                          _cartItemCount++;
+                        });
                         Cart.items.add(CartItem(product: product, quantity: selectedQuantity));
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('${product.name} x$selectedQuantity ajouté au panier'), backgroundColor: Colors.green),
-                        );
+                        if (widget.onAddToCart != null) {
+                          widget.onAddToCart!();
+                        }
                       },
                     ),
                   ],

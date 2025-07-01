@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
   },    
   categorie : {
     type : String,
-    enum : ['Herbicides', 'Fongicides', 'Insecticides', 'Nématicides'],
+    enum : ['Herbicides', 'Fongicides', 'Insecticides', 'Nématicides','autres'],
     required : true,
 }
 }, { timestamps: true });

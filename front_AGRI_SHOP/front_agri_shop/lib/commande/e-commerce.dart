@@ -17,6 +17,7 @@ class _ECommerceState extends State<ECommerce> {
   String _searchText = '';
   List<prod.Product> _allProducts = [];
   String? _selectedCategoryLabel;
+  int _cartItemCount = 0;
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _ECommerceState extends State<ECommerce> {
       futureProducts = prod.ProductService.fetchProducts();
     });
   }
+
 
   final List<Map<String, dynamic>> categories = [
     {'icon': Icons.eco, 'label': 'Herbicides'},
@@ -72,18 +74,45 @@ class _ECommerceState extends State<ECommerce> {
               ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart, color: Colors.green),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
-            },
+          Stack(
+            children: [
+              IconButton(
+                icon: Icon(Icons.shopping_cart, color: Colors.green),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+                },
+              ),
+              if (_cartItemCount > 0)
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: Container(
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    constraints: BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    child: Text(
+                      '$_cartItemCount',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+            ],
           ),
         ],
         elevation: 0,
       ),
       body: Column(
         children: [
-          // Ligne avec le bouton Trier et les catégories
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Row(
@@ -167,7 +196,14 @@ class _ECommerceState extends State<ECommerce> {
                     padding: EdgeInsets.all(12),
                     itemCount: filteredProducts.length,
                     itemBuilder: (context, index) {
-                      return prod.ProductCard(product: filteredProducts[index]);
+                      return prod.ProductCard(
+                        product: filteredProducts[index],
+                        onAddToCart: () {
+                          setState(() {
+                            _cartItemCount++;
+                          });
+                        },
+                      );
                     },
                   ),
                 );
