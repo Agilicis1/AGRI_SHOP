@@ -79,7 +79,7 @@ class _IA_pageState extends State<IA_page> {
       result = null;
     });
     try {
-      var uri = Uri.parse('https://agri-shop-5b8y.onrender.com/analyze-image');
+      var uri = Uri.parse('https://agri-shop-1.onrender.com/analyze-image');
       var request = http.MultipartRequest('POST', uri);
       if (kIsWeb && imageBytes != null) {
         request.files.add(
