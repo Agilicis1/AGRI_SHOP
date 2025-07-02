@@ -78,8 +78,14 @@ class _ECommerceState extends State<ECommerce> {
             children: [
               IconButton(
                 icon: Icon(Icons.shopping_cart, color: Colors.green),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CartPage()));
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CartPage()),
+                  );
+                  setState(() {
+                    _cartItemCount = prod.Cart.items.length;
+                  });
                 },
               ),
               if (_cartItemCount > 0)

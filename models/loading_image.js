@@ -14,6 +14,10 @@ const loading_image = new mongoose.Schema({
     type : String,
     enum : ['Herbicides', 'Fongicides', 'Insecticides', 'Nématicides','autres'],
     required : true,
+  },
+  customCategorie: {
+    type: String,
+    required: false,
   }
 }, { timestamps: true });
 

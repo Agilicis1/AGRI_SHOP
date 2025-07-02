@@ -123,6 +123,10 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
                     final imgUrl = 'https://agri-shop-5b8y.onrender.com/' + (imgObj['image'] ?? '');
                     final description = imgObj['description'] ?? '';
                     final categorie = imgObj['categorie'] ?? '';
+                    final customCategorie = imgObj['customCategorie'] ?? '';
+                    final categorieAffichee = (categorie == 'autres' && customCategorie.isNotEmpty)
+                        ? customCategorie
+                        : categorie;
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -135,7 +139,7 @@ class _ReLoadingImgState extends State<ReLoadingImg> {
                           ),
                           SizedBox(height: 8),
                           Text('description de la maladie: ' + description, style: TextStyle(fontSize: 16)),
-                          Text('categorie de la maladie: ' + categorie, style: TextStyle(fontSize: 16)),
+                          Text('categorie de la maladie: ' + categorieAffichee, style: TextStyle(fontSize: 16)),
                           Row(
                             children: [
                             /*  IconButton(

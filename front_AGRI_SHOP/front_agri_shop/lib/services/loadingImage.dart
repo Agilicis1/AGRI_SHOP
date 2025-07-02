@@ -26,6 +26,7 @@ final List<String> categories = [
   ];
   String? _selectedCategorie;
   final TextEditingController _categorieController = TextEditingController();
+  final TextEditingController _customCategorieController = TextEditingController();
   Future<void> _pickImage() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.image,
@@ -47,9 +48,9 @@ final List<String> categories = [
 
   Future<void> _uploadImageAndDescription() async {
     final hasImage = (kIsWeb && _imageBytes != null) || (!kIsWeb && _selectedImage != null);
-    if (!hasImage || _descriptionController.text.isEmpty) {
+    if (!hasImage || _descriptionController.text.isEmpty || (_selectedCategorie == 'autres' && _customCategorieController.text.isEmpty)) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Veuillez sélectionner une image et saisir une description.')),
+        SnackBar(content: Text('Veuillez sélectionner une image, saisir une description et une catégorie.')),
       );
       return;
     }
@@ -58,6 +59,7 @@ final List<String> categories = [
     });
     try {
       int? statusCode;
+      final customCategorie = _selectedCategorie == 'autres' ? _customCategorieController.text : '';
       if (kIsWeb && _imageBytes != null && _fileName != null) {
         statusCode = await MultipartRequestWithBytes(
           url: 'https://agri-shop-5b8y.onrender.com/upload-loading-image',
@@ -65,6 +67,7 @@ final List<String> categories = [
           filename: _fileName!,
           description: _descriptionController.text,
           categorie: _selectedCategorie ?? '',
+          customCategorie: customCategorie,
         );
       } else if (!kIsWeb && _selectedImage != null) {
         statusCode = await MultipartRequestWithFile(
@@ -72,6 +75,7 @@ final List<String> categories = [
           file: _selectedImage!,
           description: _descriptionController.text,
           categorie: _selectedCategorie ?? '',
+          customCategorie: customCategorie,
         );
       } else {
         statusCode = null;
@@ -86,6 +90,7 @@ final List<String> categories = [
           _imageBytes = null;
           _fileName = null;
           _descriptionController.clear();
+          _customCategorieController.clear();
         });
       } else if (statusCode == 400) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -114,6 +119,7 @@ final List<String> categories = [
   @override
   void dispose() {
     _descriptionController.dispose();
+    _customCategorieController.dispose();
     super.dispose();
   }
 
@@ -177,6 +183,17 @@ final List<String> categories = [
                   ),
                 ),
               ),
+              if (_selectedCategorie == 'autres')
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
+                  child: TextField(
+                    controller: _customCategorieController,
+                    decoration: InputDecoration(
+                      labelText: 'Précisez la catégorie',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
               SizedBox(height: 16),
               ElevatedButton.icon(
                 onPressed: _pickImage,
@@ -210,11 +227,15 @@ Future<int> MultipartRequestWithFile({
   required File file,
   required String description,
   required String categorie,
+  String? customCategorie,
 }) async {
   var request = http.MultipartRequest('POST', Uri.parse(url));
   request.files.add(await http.MultipartFile.fromPath('image', file.path));
   request.fields['description'] = description;
   request.fields['categorie'] = categorie;
+  if (customCategorie != null && customCategorie.isNotEmpty) {
+    request.fields['customCategorie'] = customCategorie;
+  }
   var response = await request.send();
   return response.statusCode;
 }
@@ -225,11 +246,15 @@ Future<int> MultipartRequestWithBytes({
   required String filename,
   required String description,
   required String categorie,
+  String? customCategorie,
 }) async {
   var request = http.MultipartRequest('POST', Uri.parse(url));
   request.files.add(http.MultipartFile.fromBytes('image', bytes, filename: filename));
   request.fields['description'] = description;
   request.fields['categorie'] = categorie;
+  if (customCategorie != null && customCategorie.isNotEmpty) {
+    request.fields['customCategorie'] = customCategorie;
+  }
   var response = await request.send();
   return response.statusCode;
 }

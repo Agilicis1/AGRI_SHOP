@@ -324,7 +324,7 @@ app.post('/api/cart/:userId/clear', async (req, res) => {
 // Upload d'une image avec description pour loading_image
 app.post('/upload-loading-image', upload.single('image'), async (req, res) => {
   try {
-    const { description, categorie } = req.body;
+    const { description, categorie, customCategorie } = req.body;
     let imagePath = '';
     if (req.file) {
       imagePath = `uploads/${req.file.filename}`;
@@ -333,6 +333,7 @@ app.post('/upload-loading-image', upload.single('image'), async (req, res) => {
       description: description || '',
       image: imagePath,
       categorie: categorie || '',
+      customCategorie: customCategorie || '',
     });
     await loadingImage.save()
     res.status(201).json({ message: 'Image et description enregistrées avec succès', loadingImage });

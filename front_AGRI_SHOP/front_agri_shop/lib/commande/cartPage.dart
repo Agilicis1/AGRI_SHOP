@@ -6,6 +6,9 @@ import 'package:front_agri_shop/commande/cartPage.dart';
 import 'package:front_agri_shop/commande/paiementPage.dart';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import '../commande/e-commerce.dart';
+import '../commande/productModel.dart';
+
 
 class CartPage extends StatefulWidget {
   @override
@@ -24,6 +27,12 @@ class _CartPageState extends State<CartPage> {
         backgroundColor: Colors.green,
       ),
     );
+  }
+  int _cartItemCount = 0;
+  void _reduceCount(CartItem item){
+    setState(() {
+      _cartItemCount--;
+    });
   }
 
   @override
@@ -84,6 +93,11 @@ class _CartPageState extends State<CartPage> {
                             icon: Icon(Icons.delete, color: Colors.red),
                             onPressed: () {
                               _removeItem(item);
+                              _reduceCount(item);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content : Text('${item.product.name} x${item.quantity} supprimé du panier'), backgroundColor: Colors.red),
+                              );
+                              _cartItemCount--;
                             },
                           ),
                         ),
