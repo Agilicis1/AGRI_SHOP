@@ -145,7 +145,7 @@ class _ECommerceState extends State<ECommerce> {
                           onTap: () {
                             setState(() {
                               if (_selectedCategoryLabel == cat['label']) {
-                                _selectedCategoryLabel = null; // désélectionner
+                                _selectedCategoryLabel = null; 
                               } else {
                                 _selectedCategoryLabel = cat['label'];
                               }
@@ -182,8 +182,7 @@ class _ECommerceState extends State<ECommerce> {
                   return Center(child: Text('Aucun produit disponible'));
                 }
                 final products = snapshot.data ?? [];
-                // Stocker tous les produits pour le filtrage local
-                if (_allProducts.isEmpty || _allProducts.length != products.length) _allProducts = products;
+                _allProducts = products;
                 List<prod.Product> filteredProducts = _allProducts;
                 if (_selectedCategoryLabel != null) {
                   filteredProducts = filteredProducts.where((p) => p.categorie == _selectedCategoryLabel).toList();
