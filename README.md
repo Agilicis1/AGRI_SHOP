@@ -150,15 +150,8 @@ test-backend-Copie/
 - **Backend IA** : render 
 
 Variables d'environnement à configurer sur les plateformes de déploiement.
-- **.env** :
-  ```
-- OpenAI : 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
-  ```
-  ```
--  mongoDB : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
-  ```
----
-
+- **.env**
+  # y renseigner les 2 clef ( mongoose et Open-AI) 
 ## À propos
 
 AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
