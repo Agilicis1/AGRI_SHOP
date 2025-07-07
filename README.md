@@ -230,8 +230,9 @@ cd front_AGRI_SHOP
 ```bash 
    cd TEST-BACKEND-COPIE
 ```
-#models/
-#├── /meddlewear
+```bash
+models/
+├── /meddlewear
     └── verificatioToken
     └── cart.model.js
     └── loading_image.js
@@ -240,6 +241,7 @@ cd front_AGRI_SHOP
     └── product.model.js
     └── user.model.js
     └── index.js
+```
 # les models
 ### sont les schemas de configuration de la base de données mongo_db_atlas
 ### On y retrouve les spécifications de chaque table de la base de données 
@@ -250,7 +252,10 @@ cd front_AGRI_SHOP
 ### nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la requette https suivant ( get) . cette route nous permet d'acceder directement a la base de donnée de l'application et de recupérer les notifications( la liste des notification ), ainsi de suite pour chaque endpoint et ces requettes https . 
 
 ## Architechture Général (front de l'application)
-## accés via  *cd front_AGRI_SHOP* 
+## accés via  
+```bash
+cd front_AGRI_SHOP
+```
 ## *cd front_AGRI_SHOP*
 ```bash├── /lib 
          └── admin
@@ -297,14 +302,15 @@ cd front_AGRI_SHOP
 
 #Switch sur la partie commande de l'application
 # Architechture General de la partie Useur
-
+```bash
     └── commande
          └── cartPage.dart 
          └── e_commerce.dart  
          └── notification_page.dart 
          └── paiementPage.dart 
          └── product_detail_page.dart 
-         └── productModel.dart 
+         └── productModel.dart
+```
 
 ## architechture détailler des classes  concernée 
 
@@ -328,9 +334,11 @@ cd front_AGRI_SHOP
 # notification_page ! 
 #### une page armée d'un l'istener( et un model de notification ) qui afficheras les informations d'une commande ( lorsequ'une commande est creer )  . 
 
-# 
-     #└── IA 
-         └── IA_page.dart 
+
+```bash
+     └── IA 
+         └── IA_page.dart
+```
 
 # IA_page.dart 
 
