@@ -135,9 +135,9 @@ test-backend-Copie/
 - **loading_Image** : permet au utilisateurs de telecharger des images et d'uploader leurs descriptions et leurs catégories 
 
 ### Backend
+
 - **index.js** : Routes principales (produits, utilisateurs, commandes, notifications)
 - **models/** : Schémas de la base de données
-  
 ---
 
 ## Déploiement
@@ -147,13 +147,13 @@ test-backend-Copie/
 - **Backend IA** : render 
 ## À propos
 
-AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
-
+- AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
 
 ---
 
 ## Contribuer
-Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
+
+-Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
 
 ---
 
@@ -163,8 +163,8 @@ Contribution des utilisateurs en téléchargeant des images de plantes malades e
 # Projet Agri Shop 
 
 ## Description
-Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd. L'application mobile posséde aussi un back-office. 
-
+- Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd. L'application mobile posséde aussi un back-office.
+---
 ## Technologie utilisée
 
 -**frontend** : flutter 
@@ -174,23 +174,35 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 
 # Fonctionalités 
 ### Register 
-L'utilisateur peut creer un compte ou se connecter dans notre base de donnée)
+
+- L'utilisateur peut creer un compte ou se connecter dans notre base de donnée)
+---
 ### E_Commerce
-Un module e_commerce de vente de produit phytosanitaire est mis a disposition des utilisateurs , leurs permettant de pouvoir rechercher des produit , les ajouter au panier , procéder au paiement via different mode de paiement (wave , orange Money , ou carte Bancaire) 
+
+- Un module e_commerce de vente de produit phytosanitaire est mis a disposition des utilisateurs , leurs permettant de pouvoir rechercher des produit , les ajouter au panier , procéder au paiement via different mode de paiement (wave , orange Money , ou carte Bancaire) . 
+---
 ### IA 
-Une IA intuitive basée sur OpenAI , permettant au utilisateur de pouvoir (prendre en photo ou selectionner une image de plante malade et de leurs proposées un diagunostique adéquat pour la maladie défie ,leurs proposer le produit si il est disponible dans la base de donnée)
+- Une IA intuitive basée sur OpenAI , permettant au utilisateur de pouvoir (prendre en photo ou selectionner une image de plante malade et de leurs proposées un diagunostique adéquat pour la maladie défie ,leurs proposer le produit si il est disponible dans la base de donnée)
+---
 
 ### interface Admin 
 ### 1-module produit 
-permettant au admin de creer un produit avec une image , le nom , la description du produit  etc.
-### 2-module utilisateur
-La capicitée de creer, de voir ou de modifier les informations d'un  ou des utilisateurs 
-### 3-module commande 
-La capacités d'accéder aux commandes des utilisateurs ( prévue dans les dev de pouvoir changer le statut d'une commande)
-### 4-module reloadingImage
-Afficher les images uploader par les utilisateurs (de permettre leurs telechargements ) pour enrichire la base de donnée RMG pour l'entrainement du modéle d'IA
-Les roles (useurs ou admin ) sont attribuer par le developpeur pour l'instant depuis la base de données (mongo_db_atlass)
 
+- permettant au admin de creer un produit avec une image , le nom , la description du produit  etc.
+---
+### 2-module utilisateur
+
+- La capicitée de creer, de voir ou de modifier les informations d'un  ou des utilisateurs
+---
+### 3-module commande 
+
+- La capacités d'accéder aux commandes des utilisateurs ( prévue dans les dev de pouvoir changer le statut d'une commande)
+---
+### 4-module reloadingImage
+
+- Afficher les images uploader par les utilisateurs (de permettre leurs telechargements ) pour enrichire la base de donnée RMG pour l'entrainement du modéle d'IA
+Les roles (useurs ou admin ) sont attribuer par le developpeur pour l'instant depuis la base de données (mongo_db_atlass)
+---
 # quick Start 
 ---
 - Les fichier .env sont actuellement exclu , ( le projet est ectuellement deployer avec render et netlify) donc nous n'en avons pas reelment besoin sauf pour repasser en local. 
@@ -255,11 +267,13 @@ models/
 Sont les schemas de configuration de la base de données mongo_db_atlas
 On y retrouve les spécifications de chaque table de la base de données 
 Si nous prennons exemple sur la table user.model : 
--nous avons les champs : nom , telephone , email , password , role  qui constitue le schemas de la base de données des   utilisateurs creer vias mongoose.shema ainsi de suite pour toutes les autres model de la base de données 
+- Nous avons les champs : nom , telephone , email , password , role  qui constitue le schemas de la base de données des   utilisateurs creer vias mongoose.shema ainsi de suite pour toutes les autres model de la base de données 
+---
 # Index.js 
-Ils s'agit de la  page principale de l'application , on y retrouves les routes (tous les endpoints de l'application) et leurs implémentations  
-Nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la requette https suivant ( get) . cette route nous permet d'acceder directement a la base de donnée de l'application et de recupérer les notifications( la liste des notification ), ainsi de suite pour chaque endpoint et ces requettes https . 
 
+- Ils s'agit de la  page principale de l'application , on y retrouves les routes (tous les endpoints de l'application) et leurs implémentations  
+Nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la requette https suivant ( get) . cette route nous permet d'acceder directement a la base de donnée de l'application et de recupérer les notifications( la liste des notification ), ainsi de suite pour chaque endpoint et ces requettes https . 
+---
 ## Architechture Général (front de l'application)
 ## accés via  
 ```bash
@@ -297,19 +311,27 @@ cd front_AGRI_SHOP
 ```
   
 ### AdminHome.dart 
-c'est la page principale de l'interface admin, elle regroupe principalement 4 cubewithlogo ( 4 cube cliquable remenant chacune a une page differente dans l'interface de l'application) elle permet ainsi au admin un primier visuelle dans l'application et leurs permet ainsi de naviger vers les autres pages( gestionDesClients.dart , gesttionDesProduits.dart , reloadingImg.dart) . 
+
+- C'est la page principale de l'interface admin, elle regroupe principalement 4 cubewithlogo ( 4 cube cliquable remenant chacune a une page differente dans l'interface de l'application) elle permet ainsi au admin un primier visuelle dans l'application et leurs permet ainsi de naviger vers les autres pages( gestionDesClients.dart , gesttionDesProduits.dart , reloadingImg.dart) . 
+---
 
 ### gestionDesClients.dart 
-une page permettant un crud des utilisateur ( en effet elle permet de creer , de modifier , de supprimer les informations des utilisateurs directement depuis l'interface admin ) ainsi qu'afficher la liste des utilisateurs et de leurs roles. 
+
+- Une page permettant un crud des utilisateur ( en effet elle permet de creer , de modifier , de supprimer les informations des utilisateurs directement depuis l'interface admin ) ainsi qu'afficher la liste des utilisateurs et de leurs roles.
+---
 
 ### gesttionDesProduits.dart
-### Cette interface permet au admins de pouvoir creer des produits vias l'interface  avec une ( photos , un nom , une description , et une image du produit) .
+
+- Cette interface permet au admins de pouvoir creer des produits vias l'interface  avec une ( photos , un nom , une description , et une image du produit) .
+---
 
 ### reloadingImg.dart 
-Cette page  permet de visualiser ( et par la suite telecharger les images , qu'ont fournie l'application ) pour enrichire la base de données  et permettre un meilleur entrainement du model , les images sont directement recupérer de puis la base de donnés , et du fichier upload , sur cette page nous pouvouns appercevoir la liste des (images , leurs categories et la description associer a cette derniere)
 
-#partie commande de l'application
-# Architechture General de la partie Useur
+- Cette page  permet de visualiser ( et par la suite telecharger les images , qu'ont fournie l'application ) pour enrichire la base de données  et permettre un meilleur entrainement du model , les images sont directement recupérer de puis la base de donnés , et du fichier upload , sur cette page nous pouvouns appercevoir la liste des (images , leurs categories et la description associer a cette derniere). 
+---
+
+# partie commande de l'application
+## Architechture General de la partie Useur
 ```bash
     └── commande
          └── cartPage.dart 
@@ -323,29 +345,28 @@ Cette page  permet de visualiser ( et par la suite telecharger les images , qu'o
 ## architechture détailler des classes  concernée 
 
 ### productModel.dart
----
+
 - S'est la classe qui rassamble les fonctionnalitées  des produits , de meme que la structure du composant , c'est se dernier qui seras appeler lors de creation d'un produit ou de la mise d'un produit  dans la page e_commerce , pour permettre au utilisateur de pouvoir ajouter des produits. 
 ---
 ### CartPage.dart 
----
+
 - Il s'agit de la page de panier , elle dispose d'un listvieuw buildeur pour afficher les produits ajouter au panier par l'utilisateur dans sa session . 
 ---
 
 ### e_commerce 
----
+
 - Page de chopping des utilisateurs , leur  permetant de voir les produits disponibles dans la base de données de pouvoir ajouter au panier les produits de leurs choix ( ces derniers sont recupérer depuis la base de donnée et afficher grace a productModel) avec le listViewBuilder de la page e_commere . Plusieurs fonctionalitées sont disponible  , comme la recherche de produit , le trie par prie croissant , la catégorisation des produits ( ex: insecticide , nemacide , fongicide)
 ---
 ### paiementPage.dart 
----
+
 - Il s'agit de la page de paiemend de l'application offrant un boutton permettant de choisir son moyen de paiment ( wave, orange money , carte Bancaire , ou espece ) , ces informations permettant de valider une commande et permettre au admin de procéder au suivis de la commande.
 ---
 ### product_detail_page.dart
----
+
 - Ils s'agit d'une page ( prévue pour les  développements future ) , elle permettras de fournir une description détailer du produit concerner , ( il s'agit d'une page de presentation des poduits lorsequ'un utilsateur clique sur un produit dans la page e_commerce ).
 ---
-
 ### notification_page ! 
----
+
 - Une page armée d'un l'istener( et un model de notification ) qui afficheras les informations d'une commande ( lorsequ'une commande est creer )  . 
 ---
 
