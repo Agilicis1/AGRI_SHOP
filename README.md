@@ -143,15 +143,8 @@ test-backend-Copie/
 ## Déploiement
 
 - **Backend** : Render (identifiants dans la section privée)
-  ```
-- clef mongoose : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/
-  ```
 - **Frontend** : Netlify
 - **Backend IA** : render 
-
-Variables d'environnement à configurer sur les plateformes de déploiement.
-- **.env**
-  # y renseigner les 2 clef ( mongoose et Open-AI) 
 ## À propos
 
 AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
@@ -164,7 +157,6 @@ Contribution des utilisateurs en téléchargeant des images de plantes malades e
 
 ## Contact
 - GitHub : https://0000/0000/0000
-
 
 # Projet Agri Shop 
 
