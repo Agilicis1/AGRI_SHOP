@@ -142,13 +142,21 @@ test-backend-Copie/
 
 ## Déploiement
 
-- **Backend** : Render (identifiants dans la section privée) ( clef mongoose : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
+- **Backend** : Render (identifiants dans la section privée)
+  ```
+- clef mongoose : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/
+  ```
 - **Frontend** : Netlify
 - **Backend IA** : render 
 
 Variables d'environnement à configurer sur les plateformes de déploiement.
-- **.env** : (OpenAI : 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, mongoDB : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
-
+- **.env** :
+  ```
+- OpenAI : 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
+  ```
+  ```
+-  mongoDB : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
+  ```
 ---
 
 ## À propos
