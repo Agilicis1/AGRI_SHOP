@@ -185,7 +185,7 @@ test-backend-Copie/
 - Une IA intuitive basée sur OpenAI , permettant au utilisateur de pouvoir (prendre en photo ou selectionner une image de plante malade et de leurs proposées un diagunostique adéquat pour la maladie défie ,leurs proposer le produit si il est disponible dans la base de donnée)
 ---
 
-### interface Admin 
+## interface Admin 
 ### 1-module produit 
 
 - permettant au admin de creer un produit avec une image , le nom , la description du produit  etc.
@@ -203,7 +203,7 @@ test-backend-Copie/
 - Afficher les images uploader par les utilisateurs (de permettre leurs telechargements ) pour enrichire la base de donnée RMG pour l'entrainement du modéle d'IA
 Les roles (useurs ou admin ) sont attribuer par le developpeur pour l'instant depuis la base de données (mongo_db_atlass)
 ---
-# quick Start 
+# Quick Start 
 ---
 - Les fichier .env sont actuellement exclu , ( le projet est ectuellement deployer avec render et netlify) donc nous n'en avons pas reelment besoin sauf pour repasser en local. 
 ---
