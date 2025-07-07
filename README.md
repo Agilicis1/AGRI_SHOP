@@ -323,23 +323,31 @@ Cette page  permet de visualiser ( et par la suite telecharger les images , qu'o
 ## architechture détailler des classes  concernée 
 
 ### productModel.dart
-S'est la classe qui rassamble les fonctionnalitées  des produits , de meme que la structure du composant , c'est se dernier qui seras appeler lors de creation d'un produit ou de la mise d'un produit  dans la page e_commerce , pour permettre au utilisateur de pouvoir ajouter des produits. 
+---
+- S'est la classe qui rassamble les fonctionnalitées  des produits , de meme que la structure du composant , c'est se dernier qui seras appeler lors de creation d'un produit ou de la mise d'un produit  dans la page e_commerce , pour permettre au utilisateur de pouvoir ajouter des produits. 
+---
 ### CartPage.dart 
-Il s'agit de la page de panier , elle dispose d'un listvieuw buildeur pour afficher les produits ajouter au panier par l'utilisateur dans sa session . 
+---
+- Il s'agit de la page de panier , elle dispose d'un listvieuw buildeur pour afficher les produits ajouter au panier par l'utilisateur dans sa session . 
+---
+
 ### e_commerce 
-Page de chopping des utilisateurs , leur  permetant de voir les produits disponibles dans la base de données de pouvoir ajouter au panier les produits de leurs choix ( ces derniers sont recupérer depuis la base de donnée et afficher grace a productModel) avec le listViewBuilder de la page e_commere . Plusieurs fonctionalitées sont disponible  , comme la recherche de produit , le trie par prie croissant , la catégorisation des produits ( ex: insecticide , nemacide , fongicide)
-
+---
+- Page de chopping des utilisateurs , leur  permetant de voir les produits disponibles dans la base de données de pouvoir ajouter au panier les produits de leurs choix ( ces derniers sont recupérer depuis la base de donnée et afficher grace a productModel) avec le listViewBuilder de la page e_commere . Plusieurs fonctionalitées sont disponible  , comme la recherche de produit , le trie par prie croissant , la catégorisation des produits ( ex: insecticide , nemacide , fongicide)
+---
 ### paiementPage.dart 
-
-Il s'agit de la page de paiemend de l'application offrant un boutton permettant de choisir son moyen de paiment ( wave, orange money , carte Bancaire , ou espece ) , ces informations permettant de valider une commande et permettre au admin de procéder au suivis de la commande.
-
+---
+- Il s'agit de la page de paiemend de l'application offrant un boutton permettant de choisir son moyen de paiment ( wave, orange money , carte Bancaire , ou espece ) , ces informations permettant de valider une commande et permettre au admin de procéder au suivis de la commande.
+---
 ### product_detail_page.dart
-
-Ils s'agit d'une page ( prévue pour les  développements future ) , elle permettras de fournir une description détailer du produit concerner , ( il s'agit d'une page de presentation des poduits lorsequ'un utilsateur clique sur un produit dans la page e_commerce ).
+---
+- Ils s'agit d'une page ( prévue pour les  développements future ) , elle permettras de fournir une description détailer du produit concerner , ( il s'agit d'une page de presentation des poduits lorsequ'un utilsateur clique sur un produit dans la page e_commerce ).
+---
 
 ### notification_page ! 
-Une page armée d'un l'istener( et un model de notification ) qui afficheras les informations d'une commande ( lorsequ'une commande est creer )  . 
-
+---
+- Une page armée d'un l'istener( et un model de notification ) qui afficheras les informations d'une commande ( lorsequ'une commande est creer )  . 
+---
 
 ```bash
      └── IA 
@@ -347,9 +355,9 @@ Une page armée d'un l'istener( et un model de notification ) qui afficheras les
 ```
 
 ### IA_page.dart 
-
-Une page qui affiche un boutton upload pour permettre au useur de telecharger une image ou de prendre une photo de leur plante , cette image est ensuite afficher puis envoyer au backend pour que se dernier envoie l'image via api a OpenAI et ensuite Open-AI  retourne une description detailler de la maladie et ce texte est afficher sur la plateform . Si le produit suggerer pour soigner la maladie est disponible dans le base de données , l'application affiche automatiquement un boutton permettant d'ajouter le produit au pannier (pas encore de regex mais plutaut une fonction contains ( pour voir si le text contient un productname , si oui un bouton ajouter au panier s'affiche) cette fonctionalitée est à revoir car elle n'est pas optimal , meme si le nom_produit  s'affiche juste sur un texte et que le produit match avec un product_name , la platform permet au utilisateur d'ajouter le  produit au panier).
-
+---
+- Une page qui affiche un boutton upload pour permettre au useur de telecharger une image ou de prendre une photo de leur plante , cette image est ensuite afficher puis envoyer au backend pour que se dernier envoie l'image via api a OpenAI et ensuite Open-AI  retourne une description detailler de la maladie et ce texte est afficher sur la plateform . Si le produit suggerer pour soigner la maladie est disponible dans le base de données , l'application affiche automatiquement un boutton permettant d'ajouter le produit au pannier (pas encore de regex mais plutaut une fonction contains ( pour voir si le text contient un productname , si oui un bouton ajouter au panier s'affiche) cette fonctionalitée est à revoir car elle n'est pas optimal , meme si le nom_produit  s'affiche juste sur un texte et que le produit match avec un product_name , la platform permet au utilisateur d'ajouter le  produit au panier).
+---
 ### Structure Générale des page d'entrée ( premiere page de l'application )
 ```bash
   └──── about.dart 
@@ -365,7 +373,7 @@ Une page qui affiche un boutton upload pour permettre au useur de telecharger un
 ```
 
 # Description des pages principales
-
+---
 - **about.dart** : Page d'informations générales sur AGRI SHOP, sa mission, ses fonctionnalités et l'équipe.
 - **gestionsdesprofiles.dart** : Permet à l'utilisateur de consulter et modifier son profil, gérer ses informations personnelles et ses paramètres.
 - **homePage.dart** : Page d'accueil de l'application, point d'entrée principal avec accès rapide aux différentes fonctionnalités (e-commerce, IA, notifications, etc.).
@@ -374,8 +382,7 @@ Une page qui affiche un boutton upload pour permettre au useur de telecharger un
 - **page_indicators.dart** : Composant graphique pour afficher la progression dans les pages d'onboarding ou de navigation multi-étapes.
 - **registration.dart** : Page d'inscription pour les nouveaux utilisateurs, collecte des informations nécessaires à la création d'un compte.
 - **Splash_Screen.dart**, **Splash_Screen2.dart**, **Splash_Screen3.dart** : Écrans d'introduction affichés au lancement de l'application, servant à présenter l'application, son logo, et à effectuer un chargement initial ou une animation de bienvenue.
-
-
+---
 
 
 
