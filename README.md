@@ -2,7 +2,7 @@
 
 ## Description
 
-AGRI SHOP est une application mobile destinée aux agriculteurs, leur offrant une plateforme intuitive pour :
+AGRI SHOP est une application mobile destinée aux agriculteurs, leurs offrant une plateforme intuitive pour :
 - Accéder à des produits phytosanitaires via un module e-commerce.
 - Diagnostiquer les maladies des plantes grâce à une IA (photo ou upload d'image).
 - Enrichir la base de données d'images pour l'IA via un module de contribution.
@@ -153,11 +153,11 @@ test-backend-Copie/
 
 ## Contribuer
 
--Page de contribution des utilisateurs , leur permettant de  télécharger des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
+-Page de contribution des utilisateurs , leur permettant de  télécharger des images de plantes malades et leurs descriptions pour enrichir notre base de données et nous aider à détecter de nouvelles maladies. 
 
 ---
 
-## Contact
+## Repos
 - GitHub : https://0000/0000/0000
 
 # Projet Agri Shop 
@@ -165,14 +165,6 @@ test-backend-Copie/
 ## Description
 - Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd. L'application mobile posséde aussi un back-office.
 ---
-## Technologie utilisée
-
--**frontend** : flutter 
--**backend** : node.js
--**base de donnée** : mongo_db_atlass 
--**IA** : open AI (nous somme entrain d'entrainner notre propre model d'IA(un CNN entrainner sur les données de plant-Village pour la détection des maladies des plantes))
-
-# Fonctionalités 
 ### Register 
 
 - L'utilisateur peut creer un compte ou se connecter dans notre base de donnée)
@@ -219,8 +211,7 @@ git clone https://000.com/000000/00000.git
 ``` 
 ## lancement du front 
 ```bash
- cd front_AGRI_SHOP
-cd front_AGRI_SHOP
+ cd front_AGRI_SHOP/front_AGRI_SHOP
 ```
 ### bien ecrire le chemain 2 fois 
 ```bash
@@ -270,7 +261,6 @@ Si nous prennons exemple sur la table user.model :
 - Nous avons les champs : nom , telephone , email , password , role  qui constitue le schemas de la base de données des   utilisateurs creer vias mongoose.shema ainsi de suite pour toutes les autres model de la base de données 
 ---
 # Index.js 
-
 - Ils s'agit de la  page principale de l'application , on y retrouves les routes (tous les endpoints de l'application) et leurs implémentations  
 Nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la requette https suivant ( get) . cette route nous permet d'acceder directement a la base de donnée de l'application et de recupérer les notifications( la liste des notification ), ainsi de suite pour chaque endpoint et ces requettes https . 
 ---
