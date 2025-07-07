@@ -10,7 +10,7 @@ AGRI SHOP est une application mobile destinée aux agriculteurs, leur offrant un
 
 ---
 
-## Table des matières
+## Menu 
 
 1. [Technologies utilisées](#technologies-utilisées)
 2. [Fonctionnalités](#fonctionnalités)
