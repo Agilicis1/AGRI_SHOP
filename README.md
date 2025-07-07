@@ -132,7 +132,7 @@ test-backend-Copie/
 - **admin/** : Interface d'administration (produits, utilisateurs, commandes, images)
 - **commande/** : E-commerce (panier, paiement, notifications, détails produits)
 - **IA/IA_page.dart** : Diagnostic de maladies par IA
-- **loading_Image** : permet au utilisateurs de telecharger des images et d'uploader leurs descriptions et leurs catégories 
+- **loading_Image** : permet au utilisateurs de telecharger des images et de fournir leurs descriptions et leurs catégories 
 
 ### Backend
 
@@ -147,13 +147,13 @@ test-backend-Copie/
 - **Backend IA** : render 
 ## À propos
 
-- AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
+- Page d'information sur l'entreprise et sur l'application 
 
 ---
 
 ## Contribuer
 
--Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
+-Page de contribution des utilisateurs , leur permettant de  télécharger des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
 
 ---
 
