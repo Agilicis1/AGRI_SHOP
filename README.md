@@ -158,11 +158,12 @@ test-backend-Copie/
 ---
 
 ## Repos
-- GitHub : https://0000/0000/0000
+- GitHub : https://github.com/Agilicis1/AGRI_SHOP.git
 
 # Projet Agri Shop 
 
 ## Description détaillée
+
 - Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd. L'application mobile posséde aussi un back-office.
 ---
 ### Register 
@@ -207,7 +208,7 @@ Les roles (useurs ou admin ) sont attribuer par le developpeur pour l'instant de
 
 ### cloner le projet 
 ```bash 
-git clone https://000.com/000000/00000.git
+git clone https://github.com/Agilicis1/AGRI_SHOP.git
 ``` 
 ## lancement du front 
 ```bash
