@@ -199,24 +199,37 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 ### cloner le projet 
 ### git clone https://000.com/000000/00000.git 
 ## lancement du front 
-### cd front_AGRI_SHOP
-### cd front_AGRI_SHOP 
+```bash
+ cd front_AGRI_SHOP
+cd front_AGRI_SHOP
+```
 ### bien ecrire le chemain 2 fois 
-### flutter pub get 
-#### flutter build web ( pour recupérer le fichier web de l'application et pouvoir permettre le deploiement de la partie front de ####l'applcation (il s'agit du fichier a selectionner lors du déploiement de l'application sur netlify(front_AGRI_SHOP/Build/web))
+```bash
+ flutter pub get
+```
+```bash
+ flutter build web
+``` 
+### ( pour recupérer le fichier web de l'application et pouvoir permettre le deploiement de la partie front de ####l'applcation (il s'agit du fichier a selectionner lors du déploiement de l'application sur netlify(front_AGRI_SHOP/Build/web))
 ### flutter run ( optionnel , car nous deployons directement le front donc nous n'avont pas forcément besoin de le lancer en local ( sauf pour un usage de test avant deploiement))
 ## pour lancer le backend 
-### npm install 
-### node in index.js 
+```bash
+ npm install 
+ node in index.js
+``` 
 ## pour lancer le backend de l'IA
-### cd backend-IA 
-### npm install ( pour telecharger les dépendances)
-### node indexIA.js (pour lancer le backend de la partie IA )
+
+```bash
+    cd backend-IA 
+    npm install ( pour telecharger les dépendances)
+    node indexIA.js (pour lancer le backend de la partie IA )
+```
 
 # Architechture de L'application 
 ## Architechture Général (backend GENERAL)
-### cd TEST-BACKEND-COPIE 
-
+```bash 
+   cd TEST-BACKEND-COPIE
+```
 #models/
 #├── /meddlewear
     └── verificatioToken
@@ -239,8 +252,8 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 ## Architechture Général (front de l'application)
 ## accés via  *cd front_AGRI_SHOP* 
 ## *cd front_AGRI_SHOP*
-#├── /lib 
-    └── admin
+```bash├── /lib 
+         └── admin
          └── adminHome.dart
          └── gestionCommande.dart
          └── gestionDesClients.dart
@@ -266,8 +279,9 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
     └── registration.dart 
     └── SplashScreen.dart 
     └── SplashScreen2.dart 
-    └── SplashScreen3.dart 
-    
+    └── SplashScreen3.dart
+```
+  
 #adminHome.dart 
 #### c'est la page principale de l'interface admin, elle regroupe principalement 4 cubewithlogo ( 4 cube cliquable remenant chacune a une page differente dans l'interface de l'application) elle permet ainsi au admin un primier visuelle dans l'application et leurs permet ainsi de naviger vers les autres pages( gestionDesClients.dart , gesttionDesProduits.dart , reloadingImg.dart) . 
 
@@ -323,8 +337,8 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 #### une page qui affiche un boutton upload pour permettre au useur de telecharger une image ou de prendre une photo de leur plante , cette image est ensuite afficher puis envoyer au backend pour que se dernier envoie l'image via api a OpenAI et ensuite Open-AI  retourne une description detailler de la maladie et ce texte est afficher sur la plateform . Si le produit suggerer pour soigner la maladie est disponible dans le base de données , l'application affiche automatiquement un boutton permettant d'ajouter le produit au pannier (pas encore de regex mais plutaut une fonction contains ( pour voir si le text contient un productname , si oui un bouton ajouter au panier s'affiche) cette fonctionalitée est à revoir car elle n'est pas optimal , meme si le nom_produit  s'affiche juste sur un texte et que le produit match avec un product_name , la platform permet au utilisateur d'ajouter le  produit au panier).
 
 # Structure Générale des page d'entrée ( premiere page de l'application )
-
-  #└──── about.dart 
+```bash
+  └──── about.dart 
     └──── gestionsdesprofiles 
     └──── homePage.dart 
     └──── loginPage.dart 
@@ -333,7 +347,8 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
     └──── registration.dart 
     └──── Splash_Screen.dart 
     └──── Splash_Screen2.dart 
-    └──── Splash_Screen3.dart 
+    └──── Splash_Screen3.dart
+```
 
 # Description des pages principales
 
