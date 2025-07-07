@@ -149,10 +149,12 @@ test-backend-Copie/
 
 AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expertise agronomique pour les agriculteurs, tout en enrichissant une base de données d'images pour l'amélioration continue de l'IA.
 
+
 ---
 
 ## Contribuer
-Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
+#### Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
+
 ---
 
 ## Contact
