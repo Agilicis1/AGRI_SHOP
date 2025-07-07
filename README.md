@@ -45,14 +45,12 @@ AGRI SHOP est une application mobile destinée aux agriculteurs, leur offrant un
 ### Admin
 - Gestion des produits (CRUD, images, descriptions)
 - Gestion des utilisateurs (CRUD, rôles)
-- Gestion des commandes (suivi, changement de statut)
+- Gestion des commandes (suivi)
 - Visualisation et téléchargement des images uploadées pour l'IA
 
 ### IA
 - Diagnostic instantané de maladies à partir d'images
 - Suggestion de produits associés si disponibles
-
----
 
 ## Installation & Lancement
 
@@ -71,7 +69,7 @@ Créer deux fichiers `.env` :
   ```
 - Dans `backend-IA/` :
   ```
-  OPENAI_API_KEY=sk-...
+  OPENAI_API_KEY=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
   ```
 
 ### Installation
@@ -105,7 +103,7 @@ flutter run
 
 - **Backend général** : gestion des utilisateurs, produits, commandes, notifications, images.
 - **Backend IA** : diagnostic d'images via OpenAI.
-- **Frontend** : application Flutter multi-plateforme (web, mobile, desktop).
+- **Frontend** : application Flutter multi-plateforme (mobile).
 
 ---
 
@@ -119,8 +117,6 @@ test-backend-Copie/
 ├── models/               # Schémas Mongoose (MongoDB)
 ├── uploads/              # Images uploadées
 ├── index.js              # Entrée backend général
-├── orders.json           # Données de commandes (exemple)
-├── users.json            # Données utilisateurs (exemple)
 └── ...
 ```
 
@@ -136,20 +132,22 @@ test-backend-Copie/
 - **admin/** : Interface d'administration (produits, utilisateurs, commandes, images)
 - **commande/** : E-commerce (panier, paiement, notifications, détails produits)
 - **IA/IA_page.dart** : Diagnostic de maladies par IA
+- **loading_Image** : permet au utilisateurs de telecharger des images et d'uploader leurs descriptions et leurs catégories 
 
 ### Backend
 - **index.js** : Routes principales (produits, utilisateurs, commandes, notifications)
 - **models/** : Schémas de la base de données
-
+  
 ---
 
 ## Déploiement
 
-- **Backend** : Render (identifiants dans la section privée)
+- **Backend** : Render (identifiants dans la section privée) ( clef mongoose : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
 - **Frontend** : Netlify
 - **Backend IA** : render 
 
 Variables d'environnement à configurer sur les plateformes de déploiement.
+- **.env** : (OpenAI : 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, mongoDB : MONGODB_URI=mongodb+srv://mohamedguisse:Pilote2122@cluster0.0ahiujs.mongodb.net/)
 
 ---
 
@@ -160,9 +158,7 @@ AGRI SHOP vise à faciliter l'accès aux produits phytosanitaires et à l'expert
 ---
 
 ## Contribuer
-
-Les contributions sont les bienvenues ! Merci de soumettre vos issues ou pull requests sur le dépôt GitHub.
-
+Contribution des utilisateurs en téléchargeant des images de plantes malades et leurs descriptions pour enrichir notre base de données et les aider à détecter de nouvelles maladies. 
 ---
 
 ## Contact
@@ -172,7 +168,7 @@ Les contributions sont les bienvenues ! Merci de soumettre vos issues ou pull re
 # Projet Agri Shop 
 
 ## Description
-Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd.L'application mobile posséde aussi un back-office. 
+Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobilile intuitive dans laquelle ils pourrons accéder a des produits phytosanitaire via une un segment e_commerce , une autre partie leur permettant d'acceder a une IA leurs permettant de telecharger ou de prendre en photo une plante malade , cette derniere leurs propose un diagnostique instantanée pour statuer sur la maladie de la plante(une description détailler de la maladie et une proposition du produit si cette derniere est disponible dans la  base de donnée). Un module (loading Image) pour telecharger des images de plantes et leurs descriptions pour les enregistrer dans la bdd. L'application mobile posséde aussi un back-office. 
 
 ## Technologie utilisée
 
@@ -214,7 +210,7 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 ### cd front_AGRI_SHOP 
 ### bien ecrire le chemain 2 fois 
 ### flutter pub get 
-#### flutter build web ( pour recupérer le fichier web de l'application et pouvoir permettre le deploiement de la partie front de ####l'applcation (il s'agit du fichier a selectionner lors du déploiement de l'application sur netlify))
+#### flutter build web ( pour recupérer le fichier web de l'application et pouvoir permettre le deploiement de la partie front de ####l'applcation (il s'agit du fichier a selectionner lors du déploiement de l'application sur netlify(front_AGRI_SHOP/Build/web))
 ### flutter run ( optionnel , car nous deployons directement le front donc nous n'avont pas forcément besoin de le lancer en local ( sauf pour un usage de test avant deploiement))
 ## pour lancer le backend 
 ### npm install 
@@ -242,7 +238,7 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 ### sont les schemas de configuration de la base de données mongo_db_atlas
 ### On y retrouve les spécifications de chaque table de la base de données 
 ### si nous prennons exemple sur la table user.model : 
-### nous avons les champs : nom , telephone , email , password , role  qui constitue le schemas de la base de données des   utilisateurs creer vias mongoàse.shema ainsi de suite pour toutes les autres model de la base de données 
+### nous avons les champs : nom , telephone , email , password , role  qui constitue le schemas de la base de données des   utilisateurs creer vias mongoose.shema ainsi de suite pour toutes les autres model de la base de données 
 # Index.js 
 ### ils s'agit de la  page principale de l'application , on y retrouves les routes (tous les endpoints de l'application) et leurs implémentations  
 ### nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la requette https suivant ( get) . cette route nous permet d'acceder directement a la base de donnée de l'application et de recupérer les notifications( la liste des notification ), ainsi de suite pour chaque endpoint et ces requettes https . 
@@ -257,18 +253,36 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
          └── gestionDesClients.dart
          └── gestionProduit.dart 
          └── reloadingImg.dart 
-
+    └── commande 
+         └── e_commerce.dart 
+         └── notification.dart 
+         └── notification_model.dart 
+         └── paiement_page.dart 
+         └── product_model.dart
+         └── product_detail.dart 
+    └── IA
+         └── IA_page.dart 
+    └── service
+         └── loadingImage.dart 
+    └── about.dart 
+    └── gestiondesprofiles.dart 
+    └── homePage.dart 
+    └── loginPage.dart 
+    └── mai.dart 
+    └── pageIndicator.dart 
+    └── registration.dart 
+    └── SplashScreen.dart 
+    └── SplashScreen2.dart 
+    └── SplashScreen3.dart 
+    
 #adminHome.dart 
-#### c'est la page principale de l'interface admin, elle regroupe principalement 4 cubewithlogo ( 4 cube cliquable remenant chacune a une page differente dans l'interface de l'application) elle permet ainsi au admin un primier visuelle dans l'application et leurs permet ainsi de naviger vers les autres pages. 
+#### c'est la page principale de l'interface admin, elle regroupe principalement 4 cubewithlogo ( 4 cube cliquable remenant chacune a une page differente dans l'interface de l'application) elle permet ainsi au admin un primier visuelle dans l'application et leurs permet ainsi de naviger vers les autres pages( gestionDesClients.dart , gesttionDesProduits.dart , reloadingImg.dart) . 
 
 #gestionDesClients.dart 
-#### une page permettant un crud des utilisateur ( en effet elle permet de creer , de modifier , de supprimer des utilisateur directement depuis l'interface admin ) ainsi qu'afficher la liste des utilisateur et de leurs roles. 
+#### une page permettant un crud des utilisateur ( en effet elle permet de creer , de modifier , de supprimer les informations des utilisateurs directement depuis l'interface admin ) ainsi qu'afficher la liste des utilisateurs et de leurs roles. 
 
-#gesttionDesProduits.dart
-#### Cette interface permet au admins de pouvoir creer des produits vias l'interface  avec une ( photos , un nom , une description , et une image du produit) il faut aussi sa voir que toutes les image de cette applications sont sauvegarder de maniere suivante :
-## 1 - le chemain d'accés de l'image est enrigistrer dans la base de données mongos DB atlas 
-####  les images en temps que tel sont enrigistrer dans un fichier upload de l'application 
-#### donc ces dernier sont recupérer lors de l'affichage de l'image dans la plateforme en passant par l'url du endpoint du depot 
+# gesttionDesProduits.dart
+#### Cette interface permet au admins de pouvoir creer des produits vias l'interface  avec une ( photos , un nom , une description , et une image du produit) .
 
 # reloadingImg.dart 
 #### cette page  permet de visualiser ( et par la suite telecharger les images , qu'ont fournie l'application ) pour enrichire la base de données  et permettre un meilleur entrainement du model , les images sont directement recupérer de puis la base de donnés , et du fichier upload .
@@ -290,35 +304,34 @@ Aplication mobile destinée au agriculteur , en leurs offrant une platforme mobi
 # productModel.dart
 #### s'est la classe qui rassamble les fonctionnalitées  des produits , de meme que la structure du composant , c'est se dernier qui seras appeler lors de creation d'un produit ou de la mise d'un produit  dans la page e_commerce , pour permettre au utilisateur de pouvoir ajouter des produits. 
 #CartPage.dart 
-#### il s'agit de la page de panier , elle dispose d'un listvieuw buildeur pour afficher les produits ajouter au panier par l'utilisateur dans  sa session . 
+#### il s'agit de la page de panier , elle dispose d'un listvieuw buildeur pour afficher les produits ajouter au panier par l'utilisateur dans sa session . 
 
-#e_commerce 
+# e_commerce 
 
-#### page de chopping des utilisateurs , leur  permetant de voir les produits disponibles dans la base de données de pouvoir ajouter au panier les produit de leurs choix ( ces derniers sont recupérer depuis la base de donnée et afficher grace a productModel) avec le listViewBuilder de la page e_commere . Plusieurs fonctionalitées sont disponible  , comme la recherche de produit , le trie par prie croissant , la catégorisation des produits ( ex: insecticide , nemacide , fongicide)
+#### page de chopping des utilisateurs , leur  permetant de voir les produits disponibles dans la base de données de pouvoir ajouter au panier les produits de leurs choix ( ces derniers sont recupérer depuis la base de donnée et afficher grace a productModel) avec le listViewBuilder de la page e_commere . Plusieurs fonctionalitées sont disponible  , comme la recherche de produit , le trie par prie croissant , la catégorisation des produits ( ex: insecticide , nemacide , fongicide)
 
 #paiementPage.dart 
 
-#### il s'agit de la page de paiemend de l'application ofrant un boutton permettant de choisir son moyen de paiment ( wave, orange money , carte Bancaire , ou espece ) , ces information permettant de valider une commande et permettre au admin de procéder au suivis de la commande.
+#### il s'agit de la page de paiemend de l'application offrant un boutton permettant de choisir son moyen de paiment ( wave, orange money , carte Bancaire , ou espece ) , ces informations permettant de valider une commande et permettre au admin de procéder au suivis de la commande.
 
 # product_detail_page.dart
 
-#### ils s'agit d'une page ( prévue pour les  développements future ) , elle permettras de fournir une description détailer du produit concerner , ( il s'agit d'une page de presentation des poduits lorsequ'un utilsateur clique sur le composant produuit dans la page e_commerce ).
+#### ils s'agit d'une page ( prévue pour les  développements future ) , elle permettras de fournir une description détailer du produit concerner , ( il s'agit d'une page de presentation des poduits lorsequ'un utilsateur clique sur un produit dans la page e_commerce ).
 
 # notification_page ! 
 #### une page armée d'un l'istener( et un model de notification ) qui afficheras les informations d'une commande ( lorsequ'une commande est creer )  . 
 
 # 
-     └── IA 
+     #└── IA 
          └── IA_page.dart 
 
 # IA_page.dart 
 
-#### une page qui affiche un boutton upload pour permettre au useur de telecharger une image ou de prendre une photo de leur plate , cette image est ensuite afficher puis envoyer au backend pour que se dernier envoie l'image via api a OpenAI pour que se se dernier retourne une description detailler  la maladie et ce texte est afficher sur la plateform . Si le produit concerner est disponible dans le base de donnés , l'application affiche automatiquement un boutton permettant d'ajouter le produit au pannier (pas encore de regex mais plutaut une fonction contains ( pour voir si le text contient un productname , si oui un bouton ajouter au panier s'affiche) cette fonctionalitée est a revoir car elle n'est pas optimal , meme si le nom_produit  s'affiche juste sur un texte et que le produit match avec un product_name , la platform permet au utilisateur d'ajouter le  produit au panier).
-
+#### une page qui affiche un boutton upload pour permettre au useur de telecharger une image ou de prendre une photo de leur plante , cette image est ensuite afficher puis envoyer au backend pour que se dernier envoie l'image via api a OpenAI et ensuite Open-AI  retourne une description detailler de la maladie et ce texte est afficher sur la plateform . Si le produit suggerer pour soigner la maladie est disponible dans le base de données , l'application affiche automatiquement un boutton permettant d'ajouter le produit au pannier (pas encore de regex mais plutaut une fonction contains ( pour voir si le text contient un productname , si oui un bouton ajouter au panier s'affiche) cette fonctionalitée est à revoir car elle n'est pas optimal , meme si le nom_produit  s'affiche juste sur un texte et que le produit match avec un product_name , la platform permet au utilisateur d'ajouter le  produit au panier).
 
 # Structure Générale des page d'entrée ( premiere page de l'application )
 
-    └──── about.dart 
+  #└──── about.dart 
     └──── gestionsdesprofiles 
     └──── homePage.dart 
     └──── loginPage.dart 
