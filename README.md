@@ -277,9 +277,8 @@ Nous pouvons prendre exemple sur le endpoint suivant */api/notifications*  et la
 ## Architechture Général (front de l'application)
 ## accés via  
 ```bash
-cd front_AGRI_SHOP
+cd front_AGRI_SHOP/front_AGRI_SHOP
 ```
-## *cd front_AGRI_SHOP*
 ```bash├── /lib 
          └── admin
          └── adminHome.dart
